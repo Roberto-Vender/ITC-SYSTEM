@@ -1,15 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-function HeaderLayout() {
+function HeaderNone() {
   return (
-    <div>
-      <header className="bg-indigo-600 text-white p-4">
-        <h1>Header Layout</h1>
-      </header>
-        <Outlet />
+    <div className="min-h-screen bg-[#E3F2FD]">
+      <Outlet />
     </div>
   );
 }
 
-export default HeaderLayout;
+export default HeaderNone;
