@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-function HealthRecords() {
+function FollowUps() {
+  const [showFaceModal, setShowFaceModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
   const openFaceModal = () => setShowFaceModal(true);
   const openRegisterModal = () => setShowRegisterModal(true);
   const [showProfileMenu, setShowProfileMenu] = useState(false); 
@@ -46,7 +48,7 @@ function HealthRecords() {
           </a>
 
           <a
-            href="/HealthRecords"
+            href="#reports"
             className="w-full flex items-center gap-2 hover:bg-blue-100 text-blue-700 font-medium py-3 px-4 shadow-sm transition rounded-lg"
           >
             <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +59,7 @@ function HealthRecords() {
           </a>
 
           <a
-            href="/FollowUps"
+            href="#reports"
             className="w-full flex items-center gap-2 hover:bg-blue-100 text-blue-700 font-medium py-3 px-4 shadow-sm transition rounded-lg"
           >
             <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +118,7 @@ function HealthRecords() {
         />
 
         {/* Date Range and Filter */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-10">
           {/* Date Range */}
           <div
             className="w-[150px]  gap-2 cursor-pointer bg-indigo-50 border border-indigo-200 text-indigo-600 font-semibold flex items-center justify-center rounded-xl shadow-md hover:bg-indigo-100 transition px-4 py-2"
@@ -170,13 +172,63 @@ function HealthRecords() {
               />
             </svg>
           </button>
-
-          {/* Export/Delete */}
-          <button className="bg-blue-100 text-blue-700 font-semibold text-sm px-4 py-2 rounded-lg shadow-sm hover:bg-blue-200 transition">
-            Export<br />Delete
-          </button>
         </div>
       </div>
+      
+      {/* Stats Section */}
+<div className="flex justify-center w-full mt-6">
+  <div className="grid grid-cols-4 gap-6 w-[100%]">
+
+    {/*Missed */}
+    <div className="bg-white border border-gray-200 shadow-md rounded-xl flex flex-col items-start justify-between p-6 h-[160px]">
+      <div className="text-red-500 font-medium">Missed</div>
+      <div className="flex items-center gap-3 mt-3">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24.6281 29.75C23.049 29.75 21.7098 29.2003 20.6104 28.101C19.5111 26.9998 18.9614 25.6606 18.9614 24.0833C18.9614 22.5061 19.5111 21.1674 20.6104 20.0671C21.7098 18.9668 23.0485 18.4167 24.6267 18.4167C26.2058 18.4167 27.545 18.9668 28.6443 20.0671C29.7446 21.1664 30.2948 22.5052 30.2948 24.0833C30.2948 25.6615 29.7446 27.0007 28.6443 28.101C27.5441 29.2013 26.2053 29.7509 24.6281 29.75ZM26.9727 27.2028L27.7462 26.4293L25.1721 23.8538V19.9977H24.0827V24.3128L26.9727 27.2028ZM7.95393 28.3333C7.32115 28.3333 6.7814 28.1105 6.33468 27.6647C5.8889 27.2189 5.66602 26.6791 5.66602 26.0454V7.95459C5.66602 7.32181 5.8889 6.78206 6.33468 6.33534C6.78046 5.88956 7.32068 5.66667 7.95535 5.66667H14.523C14.6552 5.11323 14.9494 4.64809 15.4056 4.27126C15.8618 3.89348 16.393 3.70459 16.9993 3.70459C17.617 3.70459 18.1525 3.89348 18.6058 4.27126C19.0592 4.64715 19.352 5.11228 19.4842 5.66667H26.0434C26.678 5.66667 27.2182 5.88956 27.664 6.33534C28.1098 6.78112 28.3327 7.32134 28.3327 7.95601V16.4829C28.089 16.3573 27.8586 16.2473 27.6413 16.1528C27.4241 16.0584 27.1823 15.9739 26.916 15.8993V7.95459C26.916 7.73737 26.8253 7.53762 26.644 7.35534C26.4627 7.17306 26.2625 7.0824 26.0434 7.08334H22.666V10.2425H11.3327V7.08334H7.95535C7.73718 7.08334 7.53696 7.17401 7.35468 7.35534C7.1724 7.53667 7.08174 7.7369 7.08268 7.95601V26.0454C7.08268 26.2995 7.16438 26.5082 7.32777 26.6716C7.49115 26.835 7.70035 26.9167 7.95535 26.9167H16.6338C16.7094 27.1811 16.7987 27.4271 16.9016 27.6548C17.0055 27.8814 17.1377 28.1076 17.2983 28.3333H7.95393ZM16.9993 7.40917C17.328 7.40917 17.601 7.30103 17.8182 7.08476C18.0354 6.86753 18.144 6.59459 18.144 6.26592C18.144 5.93726 18.0354 5.66431 17.8182 5.44709C17.601 5.22987 17.328 5.12126 16.9993 5.12126C16.6707 5.12126 16.3977 5.22987 16.1805 5.44709C15.9633 5.66431 15.8547 5.93726 15.8547 6.26592C15.8547 6.59459 15.9633 6.86753 16.1805 7.08476C16.3977 7.30198 16.6707 7.40917 16.9993 7.40917Z" fill="#FF0000"/>
+        </svg>
+        <span className="text-3xl font-bold text-red-500">134</span>
+      </div>
+    </div>
+
+    {/* Completed */}
+    <div className="bg-white border border-gray-200 shadow-md rounded-xl flex flex-col items-start justify-between p-6 h-[160px]">
+      <div className="text-gray-500 font-medium">Completed</div>
+      <div className="flex items-center gap-3 mt-3">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24.6281 29.75C23.049 29.75 21.7098 29.2003 20.6104 28.101C19.5111 26.9998 18.9614 25.6606 18.9614 24.0833C18.9614 22.5061 19.5111 21.1674 20.6104 20.0671C21.7098 18.9668 23.0485 18.4167 24.6267 18.4167C26.2058 18.4167 27.545 18.9668 28.6443 20.0671C29.7446 21.1664 30.2948 22.5052 30.2948 24.0833C30.2948 25.6615 29.7446 27.0007 28.6443 28.101C27.5441 29.2013 26.2053 29.7509 24.6281 29.75ZM26.9727 27.2028L27.7462 26.4293L25.1721 23.8538V19.9977H24.0827V24.3128L26.9727 27.2028ZM7.95393 28.3333C7.32115 28.3333 6.7814 28.1105 6.33468 27.6647C5.8889 27.2189 5.66602 26.6791 5.66602 26.0454V7.95459C5.66602 7.32181 5.8889 6.78206 6.33468 6.33534C6.78046 5.88956 7.32068 5.66667 7.95535 5.66667H14.523C14.6552 5.11323 14.9494 4.64809 15.4056 4.27126C15.8618 3.89348 16.393 3.70459 16.9993 3.70459C17.617 3.70459 18.1525 3.89348 18.6058 4.27126C19.0592 4.64715 19.352 5.11228 19.4842 5.66667H26.0434C26.678 5.66667 27.2182 5.88956 27.664 6.33534C28.1098 6.78112 28.3327 7.32134 28.3327 7.95601V16.4829C28.089 16.3573 27.8586 16.2473 27.6413 16.1528C27.4241 16.0584 27.1823 15.9739 26.916 15.8993V7.95459C26.916 7.73737 26.8253 7.53762 26.644 7.35534C26.4627 7.17306 26.2625 7.0824 26.0434 7.08334H22.666V10.2425H11.3327V7.08334H7.95535C7.73718 7.08334 7.53696 7.17401 7.35468 7.35534C7.1724 7.53667 7.08174 7.7369 7.08268 7.95601V26.0454C7.08268 26.2995 7.16438 26.5082 7.32777 26.6716C7.49115 26.835 7.70035 26.9167 7.95535 26.9167H16.6338C16.7094 27.1811 16.7987 27.4271 16.9016 27.6548C17.0055 27.8814 17.1377 28.1076 17.2983 28.3333H7.95393ZM16.9993 7.40917C17.328 7.40917 17.601 7.30103 17.8182 7.08476C18.0354 6.86753 18.144 6.59459 18.144 6.26592C18.144 5.93726 18.0354 5.66431 17.8182 5.44709C17.601 5.22987 17.328 5.12126 16.9993 5.12126C16.6707 5.12126 16.3977 5.22987 16.1805 5.44709C15.9633 5.66431 15.8547 5.93726 15.8547 6.26592C15.8547 6.59459 15.9633 6.86753 16.1805 7.08476C16.3977 7.30198 16.6707 7.40917 16.9993 7.40917Z" fill="#202020" fill-opacity="0.82"/>
+        </svg>
+            <span className="text-3xl font-bold text-gray-800">42</span>
+      </div>
+    </div>
+
+    {/* Pending Follow-ups */}
+    <div className="bg-white border border-gray-200 shadow-md rounded-xl flex flex-col items-start justify-between p-6 h-[160px]">
+      <div className="text-gray-500 font-medium">Pending Follow-ups</div>
+      <div className="flex items-center gap-3 mt-3">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M28.9743 34.9999C27.1166 34.9999 25.541 34.3533 24.2477 33.0599C22.9543 31.7644 22.3077 30.1888 22.3077 28.3333C22.3077 26.4777 22.9543 24.9027 24.2477 23.6083C25.541 22.3138 27.116 21.6666 28.9727 21.6666C30.8305 21.6666 32.406 22.3138 33.6993 23.6083C34.9938 24.9016 35.641 26.4766 35.641 28.3333C35.641 30.1899 34.9938 31.7655 33.6993 33.0599C32.4049 34.3544 30.8299 35.0011 28.9743 34.9999ZM31.7327 32.0033L32.6427 31.0933L29.6143 28.0633V23.5266H28.3327V28.6033L31.7327 32.0033ZM9.35768 33.3333C8.61324 33.3333 7.97824 33.0711 7.45268 32.5466C6.92824 32.0222 6.66602 31.3872 6.66602 30.6416V9.35828C6.66602 8.61383 6.92824 7.97883 7.45268 7.45328C7.97713 6.92883 8.61268 6.66661 9.35935 6.66661H17.086C17.2416 6.0155 17.5877 5.46828 18.1243 5.02494C18.661 4.5805 19.286 4.35828 19.9993 4.35828C20.726 4.35828 21.356 4.5805 21.8893 5.02494C22.4227 5.46717 22.7671 6.01439 22.9227 6.66661H30.6393C31.386 6.66661 32.0216 6.92883 32.546 7.45328C33.0705 7.97772 33.3327 8.61328 33.3327 9.35994V19.3916C33.046 19.2438 32.7749 19.1144 32.5193 19.0033C32.2638 18.8922 31.9793 18.7927 31.666 18.7049V9.35828C31.666 9.10272 31.5593 8.86772 31.346 8.65328C31.1327 8.43883 30.8971 8.33217 30.6393 8.33328H26.666V12.0499H13.3327V8.33328H9.35935C9.10268 8.33328 8.86713 8.43994 8.65268 8.65328C8.43824 8.86661 8.33157 9.10217 8.33268 9.35994V30.6416C8.33268 30.9405 8.42879 31.1861 8.62102 31.3783C8.81324 31.5705 9.05935 31.6666 9.35935 31.6666H19.5693C19.6582 31.9777 19.7632 32.2672 19.8843 32.5349C20.0066 32.8016 20.1621 33.0677 20.351 33.3333H9.35768ZM19.9993 8.71661C20.386 8.71661 20.7071 8.58939 20.9627 8.33494C21.2182 8.07939 21.346 7.75828 21.346 7.37161C21.346 6.98494 21.2182 6.66383 20.9627 6.40828C20.7071 6.15272 20.386 6.02494 19.9993 6.02494C19.6127 6.02494 19.2916 6.15272 19.036 6.40828C18.7805 6.66383 18.6527 6.98494 18.6527 7.37161C18.6527 7.75828 18.7805 8.07939 19.036 8.33494C19.2916 8.5905 19.6127 8.71661 19.9993 8.71661Z" fill="#202020" fill-opacity="0.82"/>
+        </svg>
+            <span className="text-3xl font-bold text-gray-800">19</span>
+      </div>
+    </div>
+
+    {/* Completed Follow-ups */}
+    <div className="bg-white border border-gray-200 shadow-md rounded-xl flex flex-col items-start justify-between p-6 h-[160px]">
+      <div className="text-gray-500 font-medium">Total Follow-ups</div>
+      <div className="flex items-center gap-3 mt-3">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M28.9743 34.9999C27.1166 34.9999 25.541 34.3533 24.2477 33.0599C22.9543 31.7644 22.3077 30.1888 22.3077 28.3333C22.3077 26.4777 22.9543 24.9027 24.2477 23.6083C25.541 22.3138 27.116 21.6666 28.9727 21.6666C30.8305 21.6666 32.406 22.3138 33.6993 23.6083C34.9938 24.9016 35.641 26.4766 35.641 28.3333C35.641 30.1899 34.9938 31.7655 33.6993 33.0599C32.4049 34.3544 30.8299 35.0011 28.9743 34.9999ZM31.7327 32.0033L32.6427 31.0933L29.6143 28.0633V23.5266H28.3327V28.6033L31.7327 32.0033ZM9.35768 33.3333C8.61324 33.3333 7.97824 33.0711 7.45268 32.5466C6.92824 32.0222 6.66602 31.3872 6.66602 30.6416V9.35828C6.66602 8.61383 6.92824 7.97883 7.45268 7.45328C7.97713 6.92883 8.61268 6.66661 9.35935 6.66661H17.086C17.2416 6.0155 17.5877 5.46828 18.1243 5.02494C18.661 4.5805 19.286 4.35828 19.9993 4.35828C20.726 4.35828 21.356 4.5805 21.8893 5.02494C22.4227 5.46717 22.7671 6.01439 22.9227 6.66661H30.6393C31.386 6.66661 32.0216 6.92883 32.546 7.45328C33.0705 7.97772 33.3327 8.61328 33.3327 9.35994V19.3916C33.046 19.2438 32.7749 19.1144 32.5193 19.0033C32.2638 18.8922 31.9793 18.7927 31.666 18.7049V9.35828C31.666 9.10272 31.5593 8.86772 31.346 8.65328C31.1327 8.43883 30.8971 8.33217 30.6393 8.33328H26.666V12.0499H13.3327V8.33328H9.35935C9.10268 8.33328 8.86713 8.43994 8.65268 8.65328C8.43824 8.86661 8.33157 9.10217 8.33268 9.35994V30.6416C8.33268 30.9405 8.42879 31.1861 8.62102 31.3783C8.81324 31.5705 9.05935 31.6666 9.35935 31.6666H19.5693C19.6582 31.9777 19.7632 32.2672 19.8843 32.5349C20.0066 32.8016 20.1621 33.0677 20.351 33.3333H9.35768ZM19.9993 8.71661C20.386 8.71661 20.7071 8.58939 20.9627 8.33494C21.2182 8.07939 21.346 7.75828 21.346 7.37161C21.346 6.98494 21.2182 6.66383 20.9627 6.40828C20.7071 6.15272 20.386 6.02494 19.9993 6.02494C19.6127 6.02494 19.2916 6.15272 19.036 6.40828C18.7805 6.66383 18.6527 6.98494 18.6527 7.37161C18.6527 7.75828 18.7805 8.07939 19.036 8.33494C19.2916 8.5905 19.6127 8.71661 19.9993 8.71661Z" fill="#202020" fill-opacity="0.82"/>
+        </svg>
+            <span className="text-3xl font-bold text-gray-800">115</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    
+        
+      
         
 
         {/* Tables Section */}
@@ -186,35 +238,35 @@ function HealthRecords() {
               <table className="min-w-full w-full text-sm">
                 <thead>
                   <tr className="border-b bg-indigo-50">
-                    <th className="text-left py-2 px-5 whitespace-nowrap">ID</th>
+                    <th className="text-left py-2 px-5 whitespace-nowrap">Original Visit Date</th>
+                    <th className="text-left py-2 px-5 whitespace-nowrap">Follow-up Date  </th>
                     <th className="text-left py-2 px-5 whitespace-nowrap">Name</th>
-                    <th className="text-left py-2 px-5 whitespace-nowrap">Age</th>
                     <th className="text-left py-2 px-5 whitespace-nowrap">Type of Check-up</th>
-                    <th className="text-left py-2 px-5 whitespace-nowrap">Date</th>
+                    <th className="text-left py-2 px-5 whitespace-nowrap">Diagnosis </th>
                     <th className="text-left py-2 px-5 whitespace-nowrap">Staff</th>
                     <th className="text-left py-2 px-5 whitespace-nowrap">Status</th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  <tr
+                <tr
                     className="border-t hover:bg-blue-50 transition cursor-pointer"
                     onClick={() => (window.location.href = "/CitizenProfile")}
                     role="button"
                     tabIndex={0}
-                  >
-                    <td className="py-3 px-5">112233</td>
-                    <td className="py-3 px-5">Roberto</td>
-                    <td className="py-3 px-5">21</td>
+                >
+                    <td className="py-3 px-5 whitespace-nowrap">Oct 22, 2025</td>
+                    <td className="py-3 px-5 whitespace-nowrap">Oct 28, 2025</td>
+                    <td className="py-3 px-5 whitespace-nowrap">Ana Dela Cruz</td>
                     <td className="py-3 px-5 whitespace-nowrap">General Check-up</td>
-                    <td className="py-3 px-5 whitespace-nowrap">Oct 5, 2025</td>
+                    <td className="py-3 px-5 whitespace-nowrap">Rabies Vaccine (2nd Dose)</td>
                     <td className="py-3 px-5 whitespace-nowrap">Nurse Sheilby</td>
                     <td className="py-3 px-5">
-                      <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-semibold">
+                    <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-semibold">
                         Pending
-                      </span>
+                    </span>
                     </td>
-                  </tr>
+                </tr>
                 </tbody>
               </table>
             </div>
@@ -225,4 +277,4 @@ function HealthRecords() {
   );
 }
 
-export default HealthRecords;
+export default FollowUps;

@@ -7,6 +7,7 @@ function IdentifyCitizen() {
   const closeFaceModal = () => setShowFaceModal(false);
   const openRegisterModal = () => setShowRegisterModal(true);
   const closeRegisterModal = () => setShowRegisterModal(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false); 
 
   return (
     <div className="flex min-h-screen bg-[#F5F5F5] text-gray-800">
@@ -49,22 +50,68 @@ function IdentifyCitizen() {
           </a>
 
           <a
-            href="#reports"
+            href="/HealthRecords"
             className="w-full flex items-center gap-2 hover:bg-blue-100 text-blue-700 font-medium py-3 px-4 shadow-sm transition rounded-lg"
           >
             <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19.1667 1.91663C19.4208 1.91663 19.6646 2.01759 19.8443 2.19732C20.024 2.37704 20.125 2.62079 20.125 2.87496V20.125C20.125 20.3791 20.024 20.6229 19.8443 20.8026C19.6646 20.9823 19.4208 21.0833 19.1667 21.0833H5.75C5.49583 21.0833 5.25208 20.9823 5.07236 20.8026C4.89263 20.6229 4.79167 20.3791 4.79167 20.125V18.2083H2.875V16.2916H4.79167V14.375H2.875V12.4583H4.79167V10.5416H2.875V8.62496H4.79167V6.70829H2.875V4.79163H4.79167V2.87496C4.79167 2.62079 4.89263 2.37704 5.07236 2.19732C5.25208 2.01759 5.49583 1.91663 5.75 1.91663H19.1667ZM18.2083 3.83329H6.70833V19.1666H18.2083V3.83329ZM13.4167 7.66663V10.5416H16.2917V12.4583H13.4157L13.4167 15.3333H11.5L11.499 12.4583H8.625V10.5416H11.5V7.66663H13.4167Z" fill="#1976D2"/>
-        </svg>
+          <path d="M19.1667 1.91663C19.4208 1.91663 19.6646 2.01759 19.8443 2.19732C20.024 2.37704 20.125 2.62079 20.125 2.87496V20.125C20.125 20.3791 20.024 20.6229 19.8443 20.8026C19.6646 20.9823 19.4208 21.0833 19.1667 21.0833H5.75C5.49583 21.0833 5.25208 20.9823 5.07236 20.8026C4.89263 20.6229 4.79167 20.3791 4.79167 20.125V18.2083H2.875V16.2916H4.79167V14.375H2.875V12.4583H4.79167V10.5416H2.875V8.62496H4.79167V6.70829H2.875V4.79163H4.79167V2.87496C4.79167 2.62079 4.89263 2.37704 5.07236 2.19732C5.25208 2.01759 5.49583 1.91663 5.75 1.91663H19.1667ZM18.2083 3.83329H6.70833V19.1666H18.2083V3.83329ZM13.4167 7.66663V10.5416H16.2917V12.4583H13.4157L13.4167 15.3333H11.5L11.499 12.4583H8.625V10.5416H11.5V7.66663H13.4167Z" fill="#1976D2"/>
+          </svg>
 
             Health Records
           </a>
+
+          <a
+            href="/FollowUps"
+            className="w-full flex items-center gap-2 hover:bg-blue-100 text-blue-700 font-medium py-3 px-4 shadow-sm transition rounded-lg"
+          >
+            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.6603 20.1249C15.5921 20.1249 14.6861 19.7531 13.9425 19.0094C13.1988 18.2645 12.827 17.3586 12.827 16.2916C12.827 15.2247 13.1988 14.319 13.9425 13.5747C14.6861 12.8304 15.5918 12.4583 16.6593 12.4583C17.7276 12.4583 18.6335 12.8304 19.3772 13.5747C20.1215 14.3184 20.4936 15.224 20.4936 16.2916C20.4936 17.3592 20.1215 18.2651 19.3772 19.0094C18.6329 19.7537 17.7272 20.1256 16.6603 20.1249ZM18.2463 18.4019L18.7696 17.8786L17.0283 16.1364V13.5278H16.2913V16.4469L18.2463 18.4019ZM5.38072 19.1666C4.95266 19.1666 4.58754 19.0158 4.28534 18.7143C3.98379 18.4127 3.83301 18.0476 3.83301 17.6189V5.38098C3.83301 4.95293 3.98379 4.5878 4.28534 4.28561C4.5869 3.98405 4.95234 3.83327 5.38167 3.83327H9.82451C9.91395 3.45888 10.113 3.14423 10.4215 2.88931C10.7301 2.63376 11.0895 2.50598 11.4997 2.50598C11.9175 2.50598 12.2798 2.63376 12.5864 2.88931C12.8931 3.14359 13.0911 3.45825 13.1806 3.83327H17.6177C18.047 3.83327 18.4125 3.98405 18.714 4.28561C19.0156 4.58716 19.1663 4.95261 19.1663 5.38194V11.1501C19.0015 11.0652 18.8456 10.9907 18.6987 10.9269C18.5517 10.863 18.3882 10.8058 18.208 10.7553V5.38098C18.208 5.23404 18.1467 5.09891 18.024 4.97561C17.9013 4.8523 17.7659 4.79097 17.6177 4.79161H15.333V6.92869H7.66634V4.79161H5.38167C5.23409 4.79161 5.09865 4.85294 4.97534 4.97561C4.85204 5.09827 4.7907 5.23372 4.79134 5.38194V17.6189C4.79134 17.7908 4.8466 17.932 4.95713 18.0425C5.06766 18.153 5.20917 18.2083 5.38167 18.2083H11.2524C11.3035 18.3872 11.3639 18.5536 11.4335 18.7076C11.5038 18.8609 11.5933 19.0139 11.7019 19.1666H5.38072ZM11.4997 5.01202C11.722 5.01202 11.9066 4.93887 12.0536 4.79256C12.2005 4.64562 12.274 4.46098 12.274 4.23865C12.274 4.01631 12.2005 3.83168 12.0536 3.68473C11.9066 3.53779 11.722 3.46431 11.4997 3.46431C11.2773 3.46431 11.0927 3.53779 10.9458 3.68473C10.7988 3.83168 10.7253 4.01631 10.7253 4.23865C10.7253 4.46098 10.7988 4.64562 10.9458 4.79256C11.0927 4.93951 11.2773 5.01202 11.4997 5.01202Z" fill="#202020" fill-opacity="0.82"/>
+            </svg>
+            
+            Follow-Ups
+          </a>
+          
         </nav>
       </aside>
 
-      {/* Main Content */}
-      <div className="flex-1 p-10">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">Residents</h1>
 
+      {/* Main Content */}
+      <main className="flex-1 p-8">
+        {/* Header */}
+        <div className="mb-8 flex justify-between items-center">
+          <div>
+            <h1 className="text-[#66B821] text-2xl font-bold ">Resident Profile <span className="text-[#1976D2] ml-8">Ana!</span></h1>
+            <p className="text-gray-600">Here's your health overview.</p>
+          </div>
+          <div className="flex items-center gap-4 relative">
+            {/* Notification Icon */}
+            <button className="p-2 rounded-full hover:bg-blue-100 transition" aria-label="Notifications">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 25.667c1.472 0 2.667-1.195 2.667-2.667h-5.334c0 1.472 1.195 2.667 2.667 2.667zm7.333-8V12c0-4.08-2.56-7.52-6.417-8.36V3.5c0-.736-.597-1.333-1.333-1.333s-1.333.597-1.333 1.333v.14C7.227 4.48 4.667 7.92 4.667 12v5.667L2 19.333v1.334h24v-1.334l-2.667-1.666z" fill="#1976D2"/>
+              </svg>
+            </button>
+            {/* Profile Icon */}
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-blue-200 flex items-center justify-center">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+                <path d="M14.0001 14C12.1667 14 10.5973 13.3472 9.29175 12.0416C7.98619 10.7361 7.33341 9.16663 7.33341 7.33329C7.33341 5.49996 7.98619 3.93052 9.29175 2.62496C10.5973 1.3194 12.1667 0.666626 14.0001 0.666626C15.8334 0.666626 17.4029 1.3194 18.7084 2.62496C20.014 3.93052 20.6667 5.49996 20.6667 7.33329C20.6667 9.16663 20.014 10.7361 18.7084 12.0416C17.4029 13.3472 15.8334 14 14.0001 14ZM0.666748 24V22.6666C0.666748 21.7222 0.910082 20.8544 1.39675 20.0633C1.88341 19.2722 2.52897 18.6677 3.33341 18.25C5.05564 17.3888 6.80564 16.7433 8.58341 16.3133C10.3612 15.8833 12.1667 15.6677 14.0001 15.6666C15.8334 15.6655 17.639 15.8811 19.4167 16.3133C21.1945 16.7455 22.9445 17.3911 24.6667 18.25C25.4723 18.6666 26.1184 19.2711 26.6051 20.0633C27.0917 20.8555 27.3345 21.7233 27.3334 22.6666V24C27.3334 24.9166 27.0073 25.7016 26.3551 26.355C25.7029 27.0083 24.9179 27.3344 24.0001 27.3333H4.00008C3.08341 27.3333 2.29897 27.0072 1.64675 26.355C0.994525 25.7027 0.667859 24.9177 0.666748 24Z" fill="#7AC61D"/>
+                </svg>
+              </div>
+              <button className="p-1" onClick={() => setShowProfileMenu((prev) => !prev)}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 10L12 15L17 10H7Z" fill="black" />
+                </svg>
+              </button>
+              {showProfileMenu && (
+                <div className="absolute right-0 top-12 w-40 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                  <a href="/StaffProfile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                  <button className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100" onClick={() => window.location.href = '/StaffLogin'}>Logout</button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+     
         {/* Cards Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="flex flex-col justify-center">
@@ -103,7 +150,7 @@ function IdentifyCitizen() {
                 <thead>
                   <tr className="border-b">
                     <th className="text-left py-2 px-5 whitespace-nowrap">ID</th>
-                   
+    <th className="text-left py-2 px-15 whitespace-nowrap">Name</th>
     <th className="text-left py-2 px-15 whitespace-nowrap">Age</th>
     <th className="text-left py-2 px-15 whitespace-nowrap">Address</th>
     <th className="text-left py-2 px-15 whitespace-nowrap">Contact Number</th>
@@ -124,8 +171,9 @@ function IdentifyCitizen() {
                   <td className="py-3 px-15">21</td>
                   <td className="py-3 px-15 whitespace-nowrap">pueblo de oro babag2</td>
                   <td className="py-3 px-15 whitespace-nowrap">09091090909</td>
-                  <td className="py-3 px-15 whitespace-nowrap">Vaccination</td>
+                  <td className="py-3 px-15 whitespace-nowrap">Vaccine</td>
                   <td className="py-3 px-20 whitespace-nowrap">Oct 5,2025</td>
+                  
                 </tr>
               </tbody>
             </table>
@@ -294,9 +342,10 @@ function IdentifyCitizen() {
               </div>
             </div>
           </div>
+          
         )}
+        </main>
       </div>
-    </div>
   );
 }
 

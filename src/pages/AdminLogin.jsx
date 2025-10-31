@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CitizenLogin = () => {
+const AdminLogin = () => {
   return (
     <div className="relative w-full h-screen flex items-center justify-center bg-[#E3F2FD]">
       {/* Login Card */}
@@ -17,7 +17,7 @@ const CitizenLogin = () => {
 
           
           <h2 className="pl-18 text-xl text-poppins text-black">
-            Resident Login
+            Admin Login
           </h2>
           <p className="pl-18 text-sm text-gray-500 text-poppins mt-1">
             Please sign in to access your records
@@ -49,28 +49,27 @@ const CitizenLogin = () => {
           />
         </div>
 
-        {/* Face Recognition Option */}
-        <div
-          className="mt-12 cursor-pointer bg-blue-50 border border-blue-300 text-blue-700 font-semibold text-center py-3 rounded-lg hover:bg-blue-100 transition"
-          onClick={() => alert("Face Recognition Login (to be implemented)")}
-        >
-          😀 Login with Face Recognition 
-        </div>
-
         {/* Sign In Button */}
-        <Link to="/ResidentDashboard">
+        <Link to="/AdminDashboard">
           <button className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-md hover:bg-blue-700 transition mt-5">
             Login
           </button>
         </Link>
 
-          {/* Log in as staff */}
-         <p className="mt-4 text-center text-sm text-gray-600">
-                   Login as Staff?
-                   <Link to="/Stafflogin" className="font-semibold text-blue-600 hover:text-blue-700">
-                     Click here
-                   </Link>
-                 </p>
+        {/* links */}
+        <p className="mt-6 text-center text-sm text-gray-600">
+          Don’t have an account?
+          <Link to="/CreateAccount" className="font-semibold text-blue-600 hover:text-blue-700">
+            Sign up
+          </Link>
+        </p>
+
+        <p className="mt-4 text-center text-sm text-gray-600">
+          Login as Staff?
+          <Link to="/StaffLogin" className="font-semibold text-blue-600 hover:text-blue-700">
+            Click here
+          </Link>
+        </p>
 
         {/* Notice */}
         <div className="mt-6 p-3 text-xs text-center text-gray-500">
@@ -81,4 +80,4 @@ const CitizenLogin = () => {
   );
 };
 
-export default CitizenLogin;
+export default AdminLogin;

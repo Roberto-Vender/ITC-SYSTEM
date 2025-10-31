@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const CitizenProfile = () => {
+const StaffProfile = () => {
   const [showFloatingBack, setShowFloatingBack] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -165,7 +165,7 @@ const CitizenProfile = () => {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-2xl font-bold text-black">
-            Resident Profile{" "}
+            Staff Profile{" "}
             <span className="text-blue-700 ml-2">Ana Dela Cruz</span>
           </h1>
         </div>
@@ -203,35 +203,35 @@ const CitizenProfile = () => {
 
           {/* Resident Info */}
           <div className="flex flex-col gap-2 text-sm mb-10">
-            <div className="flex justify-between">
+            <div className="flex ">
               <span className="font-bold w-40">Last Name:</span>
               <span>Dela Cruz</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex">
               <span className="font-bold w-40">First Name:</span>
               <span>Ana</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex">
               <span className="font-bold w-40">Middle:</span>
               <span>eab</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex">
               <span className="font-bold w-40">Age:</span>
               <span>52</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex">
               <span className="font-bold w-40">Sex:</span>
               <span>Female</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex">
               <span className="font-bold w-40">Address:</span>
               <span>Purok 1, Brgy. Basak</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex">
               <span className="font-bold w-40">Contact:</span>
               <span>09123456789</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex">
               <span className="font-bold w-40">Registered Date:</span>
               <span>Oct 5, 2025</span>
             </div>
@@ -256,20 +256,27 @@ const CitizenProfile = () => {
                   <th className="text-left py-2 px-5 whitespace-nowrap">Diagnosis</th>
                   <th className="text-left py-2 px-5 whitespace-nowrap">Status</th>
                 </tr>
+                <Link to="/ResidentProfile"></Link>   
               </thead>
               <tbody>
                 <tr className="border-t hover:bg-blue-50 transition cursor-pointer">
-                  <td className="py-3 px-5">Oct 13, 2025</td>
-                  <td className="py-3 px-5">Vaccination</td>
-                  <td className="py-3 px-5">Nurse Lunas</td>
-                  <td className="py-3 px-5">Rabies Dose 1</td>
-                  <td className="py-3 px-5 text-green-600 font-medium">Completed</td>
-                </tr>
+                <td className="py-3 px-5">Oct 13, 2025</td>
+                <td className="py-3 px-5">Vaccination</td>
+                <td className="py-3 px-5">Nurse Lunas</td>
+                <td className="py-3 px-5">Rabies Dose 1</td>
+                <td className="py-3 px-5 text-green-600 font-medium">Completed</td>
+                <td className="py-3 px-5 text-right">
+                <Link to="/ResidentProfileStaff">
+                <button className="bg-[#1363DF] hover:bg-[#0B5ED7] text-white text-sm font-semibold px-4 py-2 rounded-lg shadow-sm transition-all duration-300 hover:scale-[1.05]">
+                  View</button>
+                  </Link>
+                </td>
+              </tr>
               </tbody>
             </table>
           </div>
         </section>
-
+        
         {/* Add Health Record Modal */}
         {showAddModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -400,19 +407,9 @@ const CitizenProfile = () => {
             </div>
           </div>
         )}
-
-        {/* Floating Back Button */}
-        {showFloatingBack && (
-          <button
-            onClick={() => (window.location.href = "/IdentifyCitizen")}
-            className="fixed top-4 left-[260px] bg-blue-600 text-white py-1 px-2 rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300"
-          >
-            ← Back
-          </button>
-        )}
       </main>
     </div>
   );
 };
 
-export default CitizenProfile;
+export default StaffProfile;
